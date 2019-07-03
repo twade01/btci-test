@@ -5,8 +5,10 @@ provider "aws" {
 module "staging-state" {
   # source = "../../modules/state"
   # source = "/root/example/modules/state"
-  source = "~/example/modules/state"
+  # source = "~/example/modules/state"
+  source = "~/example/environments/staging/modules/state"
 
+environments/$TERRAFORM_ENVIRONMENT
 
   environment = "${var.environment}"
 }
@@ -21,8 +23,7 @@ terraform {
 }
 
 module "staging-infrastructure" {
-  # source = "../../modules/infrastructure"
-  source = "~/example/modules/infrastructure"
+  source = "~/example/environments/staging/modules/infrastructure"
 
   environment = "${var.environment}"
 }
