@@ -1,1 +1,2 @@
-variable ../../shared/variables.tf
+variable "environment" {}
+variable "region" {}
