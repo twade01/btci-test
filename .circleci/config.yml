@@ -78,6 +78,44 @@ apply_job: &apply_job
 
 jobs:
 
+# Packer ============================================================================================
+
+  validate:
+    docker:
+      - image: hashicorp/packer:latest
+    working_directory: ~/packer
+    steps:
+      - checkout
+      - run:
+          name: Validate base
+          command: packer validate ./modules/packer/packer.json
+      # - run:
+      #     name: Validate snowflake
+      #     command: packer validate ./snowflake/snowflake.json
+
+  build-base:
+    docker:
+      - image: hashicorp/packer:latest
+    working_directory: ~/packer
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/packer
+      - run:
+          name: Build base
+          command: ./scripts/build.sh base ./modules/packer/packer.json
+          no_output_timeout: 30m
+      - persist_to_workspace:
+          root: .
+          paths:
+            - manifest-base.json
+      - store_artifacts:
+          path: manifest-base.json
+
+# END Packer ============================================================================================
+
+# Terraform ============================================================================================
+
   build:
     <<: *default_config
     steps:
@@ -149,3 +187,5 @@ workflows:
           filters:
             branches:
               only: staging
+
+# END Terraform ============================================================================================
