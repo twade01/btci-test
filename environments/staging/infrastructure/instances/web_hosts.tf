@@ -66,4 +66,4 @@ resource "aws_instance" "web" {
   #     "sudo /home/ubuntu/init.sh",
   #   ]
   # }
-}
+# }
