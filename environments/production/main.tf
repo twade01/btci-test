@@ -10,7 +10,7 @@ module "production-state" {
 
 terraform {
   backend "s3" {
-    bucket  = "production-state-file"
+    bucket  = "terrastate-prod"
     key     = "terraform.tfstate"
     region  = "us-east-2"
     encrypt = true

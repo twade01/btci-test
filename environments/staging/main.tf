@@ -10,7 +10,8 @@ module "staging-state" {
 
 terraform {
   backend "s3" {
-    bucket  = "staging-state-file"
+    # bucket  = "staging-state-file"
+    bucket  = "terrastate-stage"
     key     = "terraform.tfstate"
     region  = "us-east-2"
     encrypt = true
