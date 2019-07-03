@@ -35,9 +35,9 @@ resource "aws_instance" "web" {
 
   key_name = "${aws_key_pair.id_dummy.key_name}"
 
-  tags {
-    environment = "${var.environment}"
-  }
+  # tags {
+  #   environment = "${var.environment}"
+  # }
 }
 
 resource "null_resource" "web" {

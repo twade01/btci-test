@@ -6,10 +6,10 @@ resource "aws_route_table" "public-a" {
     gateway_id = "${aws_internet_gateway.gw.id}"
   }
 
-  tags {
-    name        = "public-a"
-    environment = "${var.environment}"
-  }
+  # tags {
+  #   name        = "public-a"
+  #   environment = "${var.environment}"
+  # }
 }
 
 resource "aws_route_table_association" "public-a" {
@@ -25,10 +25,10 @@ resource "aws_route_table" "public-b" {
     gateway_id = "${aws_internet_gateway.gw.id}"
   }
 
-  tags {
-    name        = "public-b"
-    environment = "${var.environment}"
-  }
+  # tags {
+  #   name        = "public-b"
+  #   environment = "${var.environment}"
+  # }
 }
 
 resource "aws_route_table_association" "public-b" {
@@ -44,10 +44,10 @@ resource "aws_route_table" "private-a" {
     nat_gateway_id = "${aws_nat_gateway.nat-a.id}"
   }
 
-  tags {
-    name        = "private-a"
-    environment = "${var.environment}"
-  }
+  # tags {
+  #   name        = "private-a"
+  #   environment = "${var.environment}"
+  # }
 }
 
 resource "aws_route_table_association" "private-a" {
@@ -63,10 +63,10 @@ resource "aws_route_table" "private-b" {
     nat_gateway_id = "${aws_nat_gateway.nat-b.id}"
   }
 
-  tags {
-    name        = "private-b"
-    environment = "${var.environment}"
-  }
+  # tags {
+  #   name        = "private-b"
+  #   environment = "${var.environment}"
+  # }
 }
 
 resource "aws_route_table_association" "private-b" {

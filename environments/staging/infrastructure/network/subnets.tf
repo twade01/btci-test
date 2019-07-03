@@ -4,10 +4,10 @@ resource "aws_subnet" "public-a" {
   availability_zone       = "${data.aws_availability_zones.available.names[0]}"
   map_public_ip_on_launch = true
 
-  tags {
-    name        = "public-a"
-    environment = "${var.environment}"
-  }
+  # tags {
+  #   name        = "public-a"
+  #   environment = "${var.environment}"
+  # }
 }
 
 resource "aws_subnet" "public-b" {
@@ -16,10 +16,10 @@ resource "aws_subnet" "public-b" {
   availability_zone       = "${data.aws_availability_zones.available.names[1]}"
   map_public_ip_on_launch = true
 
-  tags {
-    name        = "public-b"
-    environment = "${var.environment}"
-  }
+  # tags {
+  #   name        = "public-b"
+  #   environment = "${var.environment}"
+  # }
 }
 
 resource "aws_subnet" "private-a" {
@@ -27,10 +27,10 @@ resource "aws_subnet" "private-a" {
   cidr_block        = "10.0.2.0/24"
   availability_zone = "${data.aws_availability_zones.available.names[0]}"
 
-  tags {
-    name        = "private-a"
-    environment = "${var.environment}"
-  }
+  # tags {
+  #   name        = "private-a"
+  #   environment = "${var.environment}"
+  # }
 }
 
 resource "aws_subnet" "private-b" {
@@ -38,8 +38,8 @@ resource "aws_subnet" "private-b" {
   cidr_block        = "10.0.4.0/24"
   availability_zone = "${data.aws_availability_zones.available.names[1]}"
 
-  tags {
-    name        = "private-b"
-    environment = "${var.environment}"
-  }
+  # tags {
+  #   name        = "private-b"
+  #   environment = "${var.environment}"
+  # }
 }

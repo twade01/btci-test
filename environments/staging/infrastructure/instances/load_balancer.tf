@@ -4,9 +4,9 @@ resource "aws_alb" "web" {
   security_groups = ["${aws_security_group.web-alb.id}"]
   subnets         = ["${local.subnets_ids}"]
 
-  tags {
-    environment = "${var.environment}"
-  }
+  # tags {
+  #   environment = "${var.environment}"
+  # }
 }
 
 resource "aws_alb_target_group" "web" {
