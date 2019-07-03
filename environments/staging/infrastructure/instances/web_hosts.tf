@@ -33,37 +33,37 @@ resource "aws_instance" "web" {
     "${aws_security_group.web.id}",
   ]
 
-  key_name = "${aws_key_pair.id_dummy.key_name}"
+  # key_name = "${aws_key_pair.id_dummy.key_name}"
 
   # tags {
   #   environment = "${var.environment}"
   # }
 }
 
-resource "null_resource" "web" {
-  count = "${var.count}"
+# resource "null_resource" "web" {
+#   count = "${var.count}"
 
-  connection {
-    type        = "ssh"
-    user        = "ubuntu"
-    private_key = "${file("../../.keys/id_dummy")}"
-    host        = "${element(aws_instance.web.*.public_ip, count.index)}"
-  }
+#   connection {
+#     type        = "ssh"
+#     user        = "ubuntu"
+#     private_key = "${file("../../.keys/id_dummy")}"
+#     host        = "${element(aws_instance.web.*.public_ip, count.index)}"
+#   }
 
-  provisioner "file" {
-    content     = "${data.template_file.init.rendered}"
-    destination = "/home/ubuntu/init.sh"
-  }
+  # provisioner "file" {
+  #   content     = "${data.template_file.init.rendered}"
+  #   destination = "/home/ubuntu/init.sh"
+  # }
 
-  provisioner "file" {
-    content     = "${data.template_file.instance-status.rendered}"
-    destination = "/home/ubuntu/instance-status.conf"
-  }
+  # provisioner "file" {
+  #   content     = "${data.template_file.instance-status.rendered}"
+  #   destination = "/home/ubuntu/instance-status.conf"
+  # }
 
-  provisioner "remote-exec" {
-    inline = [
-      "chmod +x /home/ubuntu/init.sh",
-      "sudo /home/ubuntu/init.sh",
-    ]
-  }
+  # provisioner "remote-exec" {
+  #   inline = [
+  #     "chmod +x /home/ubuntu/init.sh",
+  #     "sudo /home/ubuntu/init.sh",
+  #   ]
+  # }
 }
