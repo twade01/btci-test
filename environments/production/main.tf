@@ -19,7 +19,8 @@ terraform {
 }
 
 module "production-infrastructure" {
-  source = "../../modules/infrastructure"
+  # source = "../../modules/infrastructure"
+  source = "./modules/infrastructure"
 
   environment = "${var.environment}"
 }
