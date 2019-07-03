@@ -6,7 +6,7 @@ module "staging-state" {
   # source = "../../modules/state"
   # source = "/root/example/modules/state"
   # source = "~/example/modules/state"
-  source = "~/example/environments/staging/modules/state"
+  source = "/root/example/environments/staging/modules/state"
 
   environment = "${var.environment}"
 }
@@ -21,7 +21,7 @@ terraform {
 }
 
 module "staging-infrastructure" {
-  source = "~/example/environments/staging/modules/infrastructure"
+  source = "/root/example/environments/staging/modules/infrastructure"
 
   environment = "${var.environment}"
 }
