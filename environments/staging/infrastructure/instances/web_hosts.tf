@@ -15,7 +15,7 @@ data "template_file" "init" {
 #     db_username = "username"
 #     db_password = "password"
 #   }
-# }
+}
 
 data "template_file" "instance-status" {
   template = "${file("${path.module}/templates/instance-status.tpl")}"
