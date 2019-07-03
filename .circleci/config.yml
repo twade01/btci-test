@@ -1,6 +1,8 @@
 # Use the latest 2.1 version of CircleCI pipeline processing engine, see https://circleci.com/docs/2.0/configuration-reference/
 version: 2.1
 
+# Functions and Ref/Vars ============================================================================================
+
 references:
 
 base_image: &base_image
@@ -32,14 +34,23 @@ save_repo: &save_repo
 
 set_terraform_environment: &set_terraform_environment
   run:
-    name: set terraform environment
+    name: Configure terraform environment
     command: |
       cd && touch $BASH_ENV
       if [ "${CIRCLE_BRANCH}" == "master" ]; then
         echo 'export TERRAFORM_ENVIRONMENT=production' >> $BASH_ENV
+        export AWS_ACCESS_KEY_ID=${awsa}
+        export AWS_SECRET_ACCESS_KEY=${awss}
+        export AWS_DEFAULT_REGION="us-east-2"
       else
         echo 'export TERRAFORM_ENVIRONMENT=staging' >> $BASH_ENV
+        # export AWS_ACCESS_KEY_ID="awsa$"
+        export AWS_ACCESS_KEY_ID=${awsa}
+        # export AWS_SECRET_ACCESS_KEY="awss$"
+        export AWS_SECRET_ACCESS_KEY=${awss}
+        export AWS_DEFAULT_REGION="us-east-2"
       fi
+
 terraform_init: &terraform_init
   run:
     name: terraform init
@@ -47,6 +58,7 @@ terraform_init: &terraform_init
       source $BASH_ENV
       cd environments/$TERRAFORM_ENVIRONMENT
       terraform init
+
 apply_job: &apply_job
   <<: *default_config
   steps:
@@ -61,6 +73,9 @@ apply_job: &apply_job
           source $BASH_ENV
           cd environments/$TERRAFORM_ENVIRONMENT
           terraform apply --auto-approve ../../terraform.plan
+
+# End Functions and Ref/Vars ============================================================================================
+
 jobs:
 
   build:
@@ -134,4 +149,3 @@ workflows:
           filters:
             branches:
               only: staging
-
