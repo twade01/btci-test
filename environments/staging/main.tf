@@ -13,7 +13,7 @@ terraform {
     # bucket  = "staging-state-file"
     bucket  = "terrastate-stage"
     key     = "terraform.tfstate"
-    region  = "us-east-2"
+    region  = "us-west-1"
     encrypt = true
   }
 }

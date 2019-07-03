@@ -41,14 +41,14 @@ set_terraform_environment: &set_terraform_environment
         echo 'export TERRAFORM_ENVIRONMENT=production' >> $BASH_ENV
         export AWS_ACCESS_KEY_ID=${awsa}
         export AWS_SECRET_ACCESS_KEY=${awss}
-        export AWS_DEFAULT_REGION="us-east-2"
+        export AWS_DEFAULT_REGION="us-west-1"
       else
         echo 'export TERRAFORM_ENVIRONMENT=staging' >> $BASH_ENV
         # export AWS_ACCESS_KEY_ID="awsa$"
         export AWS_ACCESS_KEY_ID=${awsa}
         # export AWS_SECRET_ACCESS_KEY="awss$"
         export AWS_SECRET_ACCESS_KEY=${awss}
-        export AWS_DEFAULT_REGION="us-east-2"
+        export AWS_DEFAULT_REGION="us-west-1"
       fi
 
 terraform_init: &terraform_init
