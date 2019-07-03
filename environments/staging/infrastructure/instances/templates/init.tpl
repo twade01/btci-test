@@ -38,14 +38,8 @@ echo "Create an get instance IP file"
 echo
 export INSTANCE_IP=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
 
-# echo "Check db connection and save DB time"
-# echo
-# export MYSQL_PWD=${db_password}
-# export DB_NOW=$(mysql --host=${db_endpoint} --port=${db_port} --database=${db_name} --user=${db_username} -e 'SELECT NOW();' | tr -d 'NOW()\n')
-
 echo "This is being served by: $INSTANCE_IP" >> /home/ubuntu/index.html
 echo "</br>" >> /home/ubuntu/index.html
-echo "This instance connected to the database at: $DB_NOW" >> /home/ubuntu/index.html
 
 sudo cp index.html /home/ubuntu/www/instance-status/index.html
 sudo chmod -R 755 www
