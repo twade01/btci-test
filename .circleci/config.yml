@@ -174,13 +174,15 @@ workflows:
             - plan
           filters:
             branches:
-              only: master
+              only: staging
+              # only: master
       - apply-with-approval:
           requires:
             - approve
           filters:
             branches:
-              only: master
+              only: staging
+              # only: master
       - apply:
           requires:
             - plan
