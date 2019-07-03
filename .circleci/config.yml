@@ -88,7 +88,7 @@ jobs:
       - checkout
       - run:
           name: Validate base
-          command: packer validate ./modules/packer/packer.json
+          command: packer validate ./packer/packer.json
       # - run:
       #     name: Validate snowflake
       #     command: packer validate ./snowflake/snowflake.json
@@ -103,7 +103,7 @@ jobs:
           at: ~/packer
       - run:
           name: Build base
-          command: ./scripts/build.sh base ./modules/packer/packer.json
+          command: ./scripts/build.sh base ./packer/packer.json
           no_output_timeout: 30m
       - persist_to_workspace:
           root: .
