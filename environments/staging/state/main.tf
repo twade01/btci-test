@@ -25,5 +25,5 @@ resource "aws_dynamodb_table" "state-file-locking-table" {
 
   # tags {
   #   environment = "${var.environment}"
-  # }
+  ## }
 }
