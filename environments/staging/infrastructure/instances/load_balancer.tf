@@ -3,7 +3,7 @@ resource "aws_alb" "web" {
   internal        = false
   security_groups = ["${aws_security_group.web-alb.id}"]
   # subnets         = ["${local.subnets_ids}"]
-  subnets         = ["${element(local.subnets_ids)}"]
+  subnets         = ["${var.public-a-subnet-id}"]
   # subnet_id = "${element(local.subnets_ids, count.index)}"
 
   # tags {
