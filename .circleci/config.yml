@@ -172,22 +172,21 @@ workflows:
           type: approval
           requires:
             - plan
-          filters:
-            branches:
-              only: staging
+          # filters:
+          #   branches:
+          #     only: staging
               # only: master
       - apply-with-approval:
           requires:
             - approve
           filters:
             branches:
-              only: staging
-              # only: master
+              only: master
       - apply:
           requires:
             - plan
-          filters:
-            branches:
-              only: staging
+          # filters:
+          #   branches:
+          #     only: staging
 
 # END Terraform ============================================================================================
