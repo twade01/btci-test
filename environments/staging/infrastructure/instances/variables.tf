@@ -10,4 +10,4 @@ variable "count" {
   default = 2
 }
 
-variable "db_endpoint" {}
+# variable "db_endpoint" {}
