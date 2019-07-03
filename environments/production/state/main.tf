@@ -5,9 +5,9 @@ resource "aws_s3_bucket" "state-file-bucket" {
     enabled = true
   }
 
-  tags {
-    environment = "${var.environment}"
-  }
+  # tags {
+  #   environment = "${var.environment}"
+  # }
 }
 
 resource "aws_dynamodb_table" "state-file-locking-table" {
@@ -21,7 +21,7 @@ resource "aws_dynamodb_table" "state-file-locking-table" {
     type = "S"
   }
 
-  tags {
-    environment = "${var.environment}"
-  }
+  # tags {
+  #   environment = "${var.environment}"
+  # }
 }
