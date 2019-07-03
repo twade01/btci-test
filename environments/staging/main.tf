@@ -8,8 +8,6 @@ module "staging-state" {
   # source = "~/example/modules/state"
   source = "~/example/environments/staging/modules/state"
 
-environments/$TERRAFORM_ENVIRONMENT
-
   environment = "${var.environment}"
 }
 
