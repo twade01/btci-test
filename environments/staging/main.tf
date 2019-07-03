@@ -3,7 +3,8 @@ provider "aws" {
 }
 
 module "staging-state" {
-  source = "../../modules/state"
+  # source = "../../modules/state"
+  source = "./modules/state"
 
   environment = "${var.environment}"
 }
