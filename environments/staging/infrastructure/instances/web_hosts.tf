@@ -8,14 +8,14 @@ locals {
 data "template_file" "init" {
   template = "${file("${path.module}/templates/init.tpl")}"
 
-  vars {
-    db_endpoint = "${var.db_endpoint}"
-    db_port     = 3306
-    db_name     = "${var.environment}"
-    db_username = "username"
-    db_password = "password"
-  }
-}
+#   vars {
+#     db_endpoint = "${var.db_endpoint}"
+#     db_port     = 3306
+#     db_name     = "${var.environment}"
+#     db_username = "username"
+#     db_password = "password"
+#   }
+# }
 
 data "template_file" "instance-status" {
   template = "${file("${path.module}/templates/instance-status.tpl")}"

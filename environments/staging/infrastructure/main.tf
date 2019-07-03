@@ -26,5 +26,5 @@ module "instances" {
   public-a-subnet-id = "${module.network.public-a-subnet-id}"
   public-b-subnet-id = "${module.network.public-b-subnet-id}"
 
-  db_endpoint = "${module.databases.db_endpoint}"
+  # db_endpoint = "${module.databases.db_endpoint}"
 }
